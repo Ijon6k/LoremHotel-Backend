@@ -15,10 +15,9 @@ type Room struct {
 	TotalPrice    float64 `json:"total_price"`
 	Capacity      int     `json:"capacity"`
 	StayDuration  int     `json:"stay_duration"`
-	Image         string  `json:"image"` // Field image untuk URL gambar
+	Image         string  `json:"image"`
 }
 
-// Sample data for available rooms
 var Rooms = []Room{
 	{
 		ID:            1,

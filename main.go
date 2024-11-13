@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
-
 	"hotel-api/config"
 	"hotel-api/handlers"
+	"log"
+	"net/http"
 
 	"github.com/gorilla/mux"
 )
@@ -28,6 +27,6 @@ func main() {
 
 
 	// Start server
-	fmt.Println("Server berjalan di port 8080")
-	log.Fatal(http.ListenAndServe(":8080", handler))
+	fmt.Println("Server berjalan di localhost:8080 dan 192.168.1.4:8080")
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", handler))
 }
