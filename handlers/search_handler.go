@@ -20,20 +20,20 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Log the received payload
-	log.Printf("Received request payload: %+v\n", payload)
+	log.Printf("\n--- Received Request Payload ---\n%+v\n-----------------------------\n", payload)
 
 	// Get available rooms based on search criteria
 	availableRooms := services.FilterAvailableRooms(payload)
 
 	// Check if no rooms are available
 	if len(availableRooms) == 0 {
-		log.Println("No rooms found for the provided criteria")
+		log.Println("\n--- No Rooms Found ---\nNo rooms found for the provided criteria\n-----------------------\n")
 		http.Error(w, "Kamar tidak ditemukan", http.StatusNotFound)
 		return
 	}
 
 	// Log the response that will be sent
-	log.Printf("Sending response: %+v\n", availableRooms)
+	log.Printf("\n--- Sending Response ---\n%+v\n-----------------------\n", availableRooms)
 
 	// Send response
 	w.Header().Set("Content-Type", "application/json")

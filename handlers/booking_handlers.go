@@ -38,7 +38,6 @@ func ConfirmBooking(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-
 func GetConfirmedBooking(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
@@ -56,7 +55,7 @@ func GetConfirmedBooking(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Log the booking data sent to frontend
-	log.Printf("Confirmed booking data sent to frontend: %+v\n", booking)
+	log.Printf("\n--- Confirmed Booking Data Sent ---\n%+v\n-------------------------------\n", booking)
 
 	// Send the confirmed booking data to frontend
 	w.WriteHeader(http.StatusOK)
@@ -72,7 +71,13 @@ func GetAllConfirmedBookings(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Kirim respons ke frontend
+	log.Println("\n--- All Confirmed Bookings Sent ---")
+	for _, booking := range allBookings {
+		log.Printf("%+v\n", booking)
+	}
+	log.Println("-------------------------------")
+
+	// Send response
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(allBookings)
 }
-
