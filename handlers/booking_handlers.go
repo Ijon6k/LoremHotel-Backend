@@ -54,8 +54,21 @@ func GetConfirmedBooking(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Log the booking data sent to frontend
-	log.Printf("\n--- Confirmed Booking Data Sent ---\n%+v\n-------------------------------\n", booking)
+	// Log the booking data field by field
+	log.Println("\n--- Confirmed Booking Data Sent ---")
+	log.Printf("Booking ID: %d\n", booking.ID)
+	log.Printf("Room ID: %d\n", booking.RoomId)
+	log.Printf("Room Type: %s\n", booking.RoomType)
+	log.Printf("Check-in Date: %s\n", booking.CheckIn)
+	log.Printf("Check-out Date: %s\n", booking.CheckOut)
+	log.Printf("Adults: %d\n", booking.Adults)
+	log.Printf("Children: %d\n", booking.Children)
+	log.Printf("Name: %s\n", booking.Name)
+	log.Printf("Phone: %s\n", booking.Phone)
+	log.Printf("Email: %s\n", booking.Email)
+	log.Printf("Total Cost: $%.2f\n", booking.TotalCost)
+	log.Printf("Days: %d\n", booking.Days)
+	log.Println("-------------------------------")
 
 	// Send the confirmed booking data to frontend
 	w.WriteHeader(http.StatusOK)
@@ -70,10 +83,22 @@ func GetAllConfirmedBookings(w http.ResponseWriter, r *http.Request) {
 		allBookings = append(allBookings, booking)
 	}
 
-	// Kirim respons ke frontend
+	// Log each booking field by field
 	log.Println("\n--- All Confirmed Bookings Sent ---")
 	for _, booking := range allBookings {
-		log.Printf("%+v\n", booking)
+		log.Printf("Booking ID: %d\n", booking.ID)
+		log.Printf("Room ID: %d\n", booking.RoomId)
+		log.Printf("Room Type: %s\n", booking.RoomType)
+		log.Printf("Check-in Date: %s\n", booking.CheckIn)
+		log.Printf("Check-out Date: %s\n", booking.CheckOut)
+		log.Printf("Adults: %d\n", booking.Adults)
+		log.Printf("Children: %d\n", booking.Children)
+		log.Printf("Name: %s\n", booking.Name)
+		log.Printf("Phone: %s\n", booking.Phone)
+		log.Printf("Email: %s\n", booking.Email)
+		log.Printf("Total Cost: $%.2f\n", booking.TotalCost)
+		log.Printf("Days: %d\n", booking.Days)
+		log.Println("-------------------------------")
 	}
 	log.Println("-------------------------------")
 
